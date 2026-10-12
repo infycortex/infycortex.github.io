@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Hydroponics Monitoring and Automation preview">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1F3A"/>
+      <stop offset="1" stop-color="#123058"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg4)"/>
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="1">
+    <path d="M0 100 H640 M0 200 H640 M0 300 H640"/>
+    <path d="M160 0 V400 M320 0 V400 M480 0 V400"/>
+  </g>
+  <g stroke="#00B8D9" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M250 300 V230" opacity="0.7"/>
+    <path d="M310 300 V200" opacity="0.9"/>
+    <path d="M370 300 V240" opacity="0.7"/>
+  </g>
+  <g fill="#00B8D9">
+    <circle cx="250" cy="230" r="7" opacity="0.7"/>
+    <circle cx="310" cy="200" r="8"/>
+    <circle cx="370" cy="240" r="7" opacity="0.7"/>
+    <circle cx="250" cy="300" r="4"/>
+    <circle cx="310" cy="300" r="4"/>
+    <circle cx="370" cy="300" r="4"/>
+  </g>
+  <path d="M210 300 H410" stroke="#FFFFFF" stroke-width="2" opacity="0.35"/>
+  <g fill="none" stroke="#00B8D9" stroke-width="2">
+    <circle cx="500" cy="130" r="34" opacity="0.3"/>
+    <circle cx="500" cy="130" r="22" opacity="0.55"/>
+    <circle cx="500" cy="130" r="11" opacity="0.85"/>
+  </g>
+  <circle cx="500" cy="130" r="4" fill="#00B8D9"/>
+  <path d="M466 180 H534 M466 196 H510" stroke="#FFFFFF" stroke-width="3" opacity="0.3" stroke-linecap="round"/>
+  <text x="320" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF" opacity="0.85" letter-spacing="3">HYDROPONICS AUTOMATION</text>
+</svg>

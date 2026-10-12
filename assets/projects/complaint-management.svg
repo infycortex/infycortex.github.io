@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Smart Complaint Management System preview">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1F3A"/>
+      <stop offset="1" stop-color="#123058"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg1)"/>
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="1">
+    <path d="M0 80 H640 M0 160 H640 M0 240 H640 M0 320 H640"/>
+    <path d="M80 0 V400 M160 0 V400 M240 0 V400 M320 0 V400 M400 0 V400 M480 0 V400 M560 0 V400"/>
+  </g>
+  <g>
+    <rect x="170" y="90" width="300" height="220" rx="12" fill="#FFFFFF" opacity="0.06"/>
+    <rect x="170" y="90" width="300" height="34" rx="12" fill="#00B8D9" opacity="0.25"/>
+    <rect x="186" y="140" width="180" height="12" rx="6" fill="#00B8D9" opacity="0.7"/>
+    <rect x="186" y="166" width="250" height="10" rx="5" fill="#FFFFFF" opacity="0.3"/>
+    <rect x="186" y="188" width="220" height="10" rx="5" fill="#FFFFFF" opacity="0.22"/>
+    <rect x="186" y="210" width="240" height="10" rx="5" fill="#FFFFFF" opacity="0.3"/>
+    <rect x="186" y="246" width="96" height="26" rx="13" fill="#00B8D9"/>
+    <rect x="292" y="246" width="96" height="26" rx="13" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.4"/>
+  </g>
+  <g fill="none" stroke="#00B8D9" stroke-linecap="round">
+    <circle cx="88" cy="330" r="34" stroke-width="2.5" opacity="0.3"/>
+    <circle cx="88" cy="330" r="22" stroke-width="3" opacity="0.55"/>
+    <circle cx="88" cy="330" r="11" stroke-width="3.5" opacity="0.85"/>
+  </g>
+  <circle cx="88" cy="330" r="4" fill="#00B8D9"/>
+  <text x="320" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF" opacity="0.85" letter-spacing="3">COMPLAINT MANAGEMENT</text>
+</svg>

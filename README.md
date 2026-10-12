@@ -145,7 +145,7 @@ All external links open in a new tab with `rel="noopener noreferrer"` and carry 
 
 - **Name:** InfyCortex — *Infy* (infinite possibility) + *Cortex* (intelligence at work)
 - **Logos:** original vector suite in `assets/logo/` — symbol mark (dark + light variants), horizontal and vertical lockups, plus 2000px PNG/JPG exports (white background; `favicon.svg` and `og-image.png` are derived from them, originals untouched)
-- **Wordmark:** InfyCortex (Sora, with "Infy" in White/Navy and "Cortex" in blue) · SOLUTION (Inter, letter-spaced)
+- **Wordmark:** InfyCortex (Sora, with "Infy" in White/Navy and "Cortex" in blue) · SOLUTION (Sora, letters spread edge-to-edge to match the wordmark width exactly)
 - **Palette:** Primary Navy `#0B1F3A` · Infy Blue `#2563EB` · Cortex Cyan `#00B8D9` · Slate `#475569` · White `#FFFFFF` · Light `#F5F8FC` · Dark `#071426`
 - **Concept:** an infinity loop woven with circuit traces — limitless ideas, engineered.
 

@@ -238,10 +238,11 @@ section { padding: 88px 0; }
 .brand-name .w-cortex { color: var(--blue); }
 
 .brand-sub {
+  display: flex;
+  justify-content: space-between;
   font-family: var(--font-brand);
   font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 5.6px;
   color: var(--text-muted);
   margin-top: 3px;
 }
@@ -944,7 +945,7 @@ section { padding: 88px 0; }
 .footer-brand .brand-name { font-size: 1.45rem; color: var(--white); }
 .footer-brand .brand-name .w-inf { color: var(--white); }
 .footer-brand .brand-name .w-cortex { color: #5B8CFF; }
-.footer-brand .brand-sub { font-size: 0.64rem; letter-spacing: 5.6px; color: #AFC0D8; }
+.footer-brand .brand-sub { font-size: 0.64rem; color: #AFC0D8; }
 .footer-tagline { margin: 20px 0 0; font-size: 0.92rem; line-height: 1.8; max-width: 320px; }
 
 /* shared social icon row — footer and contact card */
@@ -1185,7 +1186,7 @@ section { padding: 88px 0; }
 
 @media (max-width: 340px) {
   .brand-name { font-size: 1.25rem; }
-  .brand-sub { font-size: 0.6rem; letter-spacing: 4px; }
+  .brand-sub { font-size: 0.6rem; }
   .brand-logo { width: 42px; }
   .footer-grid { grid-template-columns: 1fr; }
 }

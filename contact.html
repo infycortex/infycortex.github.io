@@ -146,6 +146,10 @@
           <p>Fill in the details below and we'll get back to you.</p>
 
           <form id="enquiryForm" novalidate>
+            <div class="hp-field" aria-hidden="true">
+              <label for="_gotcha">Leave this field empty</label>
+              <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name <span class="required" aria-hidden="true">*</span></label>
@@ -183,11 +187,11 @@
               <textarea id="message" name="message" placeholder="Tell us briefly about your requirement or project idea…" required></textarea>
               <span class="field-error" data-error-for="message" aria-live="polite"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Send Enquiry
+            <button type="submit" class="btn btn-primary" id="formSubmit"><span class="btn-label">Send Enquiry</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
-            <p class="form-note">This is a static website — submitting the form opens your email app with your enquiry addressed to us, so nothing is stored on any server.</p>
-            <p class="form-status" aria-live="polite"></p>
+            <p class="form-note">Your details are used only to reply to this enquiry. See our <a href="./privacy.html">Privacy Policy</a>.</p>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
 

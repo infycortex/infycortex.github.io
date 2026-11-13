@@ -1,8 +1,8 @@
 /* ============================================================
    InfyCortex Solution — script.js
    Mobile menu, scroll effects, reveal animations, back-to-top,
-   hero neural-network canvas, footer year and static contact
-   form (mailto fallback).
+   hero neural-network canvas, footer year, project link slots and
+   the contact form (fetch submission with mailto fallback).
    ============================================================ */
 (function () {
   'use strict';
@@ -248,11 +248,51 @@
     }
   }
 
-  /* ---------- Contact form (static — mailto fallback) ---------- */
+  /* ---------- Contact form ---------- */
+  // Form endpoint — replace the placeholder with your Formspree (or similar) URL.
+  // While the placeholder is present, the form falls back to a pre-filled email.
+  var FORM_ENDPOINT = 'https://formspree.io/f/[[OWNER TO PROVIDE: FORMSPREE FORM ID]]';
+
+  // Maps ?project= / ?service= query values to the dropdown options.
+  var SERVICE_ALIASES = {
+    'complaint-management': 'College Project',
+    'safehaven-iot': 'IoT Project',
+    'careq': 'College Project',
+    'hydroponics': 'IoT Project',
+    'college-project': 'College Project',
+    'college-projects': 'College Project',
+    'website': 'Website Development',
+    'website-development': 'Website Development',
+    'websites': 'Website Development',
+    'software': 'Software Development',
+    'software-development': 'Software Development',
+    'ai-ml': 'AI/ML Project',
+    'ai-ml-project': 'AI/ML Project',
+    'iot': 'IoT Project',
+    'iot-project': 'IoT Project'
+  };
+
   var form = document.querySelector('#enquiryForm');
   if (!form) return;
 
   var statusBox = form.querySelector('.form-status');
+  var submitBtn = form.querySelector('#formSubmit');
+  var submitLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+
+  (function preselectService() {
+    var service = form.querySelector('#service');
+    if (!service) return;
+    var params = new URLSearchParams(window.location.search);
+    var requested = (params.get('project') || params.get('service') || '').trim().toLowerCase();
+    if (!requested) return;
+    var match = SERVICE_ALIASES[requested] || '';
+    if (!match) {
+      Array.prototype.forEach.call(service.options, function (option) {
+        if (option.value.toLowerCase() === requested) match = option.value;
+      });
+    }
+    if (match) service.value = match;
+  })();
 
   function setError(field, message) {
     var errorEl = form.querySelector('[data-error-for="' + field.id + '"]');
@@ -293,6 +333,39 @@
     });
   });
 
+  function setStatus(message, type) {
+    if (!statusBox) return;
+    statusBox.textContent = message;
+    statusBox.className = 'form-status ' + type;
+    statusBox.setAttribute('role', type === 'error' ? 'alert' : 'status');
+  }
+
+  function setSending(sending) {
+    if (!submitBtn) return;
+    submitBtn.disabled = sending;
+    submitBtn.setAttribute('aria-busy', String(sending));
+    if (submitLabel) submitLabel.textContent = sending ? 'Sending…' : 'Send Enquiry';
+  }
+
+  function openMailto() {
+    var field = function (selector) {
+      var el = form.querySelector(selector);
+      return el ? el.value.trim() : '';
+    };
+    var name = field('#name');
+    var subject = 'Website Enquiry — ' + (field('#service') || 'General') + ' (' + name + ')';
+    var body = 'Name: ' + name + '\n'
+      + 'Email: ' + field('#email') + '\n'
+      + 'Phone: ' + field('#phone') + '\n'
+      + 'Service Required: ' + field('#service') + '\n\n'
+      + 'Message:\n' + field('#message') + '\n\n'
+      + '— Sent from the InfyCortex Solution website';
+
+    window.location.href = 'mailto:infycortex@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  }
+
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     if (!validate()) {
@@ -301,33 +374,32 @@
       return;
     }
 
-    // GitHub Pages has no backend — hand the enquiry to the visitor's
-    // email client so it reaches the InfyCortex inbox.
-    var name = form.querySelector('#name').value.trim();
-    var email = form.querySelector('#email').value.trim();
-    var phone = form.querySelector('#phone').value.trim();
-    var service = form.querySelector('#service').value;
-    var message = form.querySelector('#message').value.trim();
+    var honeypot = form.querySelector('[name="_gotcha"]');
+    if (honeypot && honeypot.value.trim()) return;
 
-    var subject = 'Website Enquiry — ' + service + ' (' + name + ')';
-    var body = 'Name: ' + name + '\n'
-      + 'Email: ' + email + '\n'
-      + 'Phone: ' + phone + '\n'
-      + 'Service Required: ' + service + '\n\n'
-      + 'Message:\n' + message + '\n\n'
-      + '— Sent from the InfyCortex Solution website';
-
-    window.location.href = 'mailto:infycortex@gmail.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(body);
-
-    if (statusBox) {
-      statusBox.textContent = 'Thank you, ' + name.split(' ')[0]
-        + '. Your email app should now open with your enquiry — press Send there to reach us. '
-        + 'You can also write to us directly at infycortex@gmail.com.';
-      statusBox.classList.add('success');
-      statusBox.setAttribute('role', 'status');
+    var endpoint = FORM_ENDPOINT.trim();
+    if (!endpoint || endpoint.indexOf('[[OWNER TO PROVIDE') !== -1) {
+      console.warn('InfyCortex: contact form endpoint is not configured yet — falling back to a pre-filled email. Set FORM_ENDPOINT in js/script.js.');
+      openMailto();
+      setStatus('Your email app is opening with the enquiry filled in. If nothing happens, email infycortex@gmail.com or message us on WhatsApp at +91 90214 96257.', 'pending');
+      return;
     }
-    form.reset();
+
+    setSending(true);
+    setStatus('Sending your enquiry…', 'pending');
+
+    fetch(endpoint, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      form.reset();
+      setStatus('Thank you. We have received your enquiry and will reply within 24 hours.', 'success');
+    }).catch(function () {
+      setStatus('Sorry — your enquiry could not be sent. Please email infycortex@gmail.com or message us on WhatsApp at +91 90214 96257.', 'error');
+    }).then(function () {
+      setSending(false);
+    });
   });
 })();

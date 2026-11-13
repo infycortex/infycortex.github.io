@@ -11,7 +11,7 @@
   --navy-2: #071426;
   --navy-3: #16345E;
   --slate: #475569;
-  --text-muted: #64748B;
+  --text-muted: #5B6B80;
   --blue: #2563EB;
   --blue-dark: #1D4ED8;
   --blue-soft: #EFF4FE;
@@ -81,9 +81,18 @@ p { margin: 0 0 1em; }
 ul { padding-left: 1.2em; }
 
 :focus-visible {
-  outline: 3px solid var(--cyan);
+  outline: 3px solid var(--blue);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+.section-dark :focus-visible,
+.hero :focus-visible,
+.page-hero :focus-visible,
+.cta-band :focus-visible,
+.site-footer :focus-visible,
+.panel-visual :focus-visible {
+  outline-color: var(--cyan);
 }
 
 .skip-link {
@@ -307,7 +316,7 @@ section { padding: 88px 0; }
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  transition: opacity var(--transition), transform var(--transition);
 }
 .dropdown li { width: 100%; }
 /* outranks `.main-nav ul` flex-row so items stack vertically */
@@ -330,7 +339,6 @@ section { padding: 88px 0; }
 .dropdown a:hover { background: var(--blue-soft); color: var(--navy); }
 
 .has-dropdown:hover .dropdown,
-.has-dropdown:focus-within .dropdown,
 .has-dropdown.open .dropdown {
   opacity: 1;
   visibility: visible;
@@ -1005,6 +1013,14 @@ section { padding: 88px 0; }
   margin-top: 16px;
 }
 
+/* Inline links inside body text need a non-colour cue (WCAG 1.4.1) */
+main p a:not(.btn):not(.card-link),
+main .legal a,
+.footer-legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .form-status {
   display: none;
   margin-top: 18px;
@@ -1112,9 +1128,9 @@ section { padding: 88px 0; }
 /* shared social icon row — footer and contact card */
 .social-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; }
 .social-list a {
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   background: rgba(255, 255, 255, 0.06);
@@ -1130,7 +1146,7 @@ section { padding: 88px 0; }
   color: var(--navy);
   transform: translateY(-3px);
 }
-.social-list svg { width: 19px; height: 19px; }
+.social-list svg { width: 20px; height: 20px; }
 
 .contact-social { margin-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 20px; }
 .social-heading {
@@ -1313,8 +1329,6 @@ section { padding: 88px 0; }
     transition: max-height 0.3s ease;
   }
   .has-dropdown.open .dropdown { max-height: 300px; }
-  .has-dropdown:hover .dropdown,
-  .has-dropdown:focus-within .dropdown { transform: none; }
 
   .hero .container { grid-template-columns: 1fr; text-align: center; gap: 48px; }
   .hero-lead { margin-inline: auto; }

@@ -11,6 +11,53 @@
   var navToggle = document.querySelector('.nav-toggle');
   var mainNav = document.querySelector('.main-nav');
   var backToTop = document.querySelector('.back-to-top');
+  var dropdownItem = mainNav ? mainNav.querySelector('.has-dropdown') : null;
+  var dropdownTrigger = dropdownItem ? dropdownItem.querySelector(':scope > a') : null;
+
+  /* ---------- Services dropdown ---------- */
+  var dropdownOpening = true;
+
+  function setDropdown(open) {
+    if (!dropdownItem || !dropdownTrigger) return;
+    dropdownItem.classList.toggle('open', open);
+    dropdownTrigger.setAttribute('aria-expanded', String(open));
+  }
+
+  if (dropdownItem && dropdownTrigger) {
+    // The trigger opens the submenu; the "All Services" item inside it is the page link.
+    dropdownTrigger.addEventListener('click', function (event) {
+      event.preventDefault();
+      setDropdown(!dropdownItem.classList.contains('open'));
+    });
+
+    dropdownTrigger.addEventListener('keydown', function (event) {
+      if (event.key === ' ' || event.key === 'Spacebar') {
+        event.preventDefault();
+        setDropdown(!dropdownItem.classList.contains('open'));
+      }
+    });
+
+    dropdownItem.addEventListener('focusin', function () {
+      if (dropdownOpening) setDropdown(true);
+    });
+
+    dropdownItem.addEventListener('focusout', function (event) {
+      if (!dropdownItem.contains(event.relatedTarget)) setDropdown(false);
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!dropdownItem.contains(event.target)) setDropdown(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape' || !dropdownItem.classList.contains('open')) return;
+      // Returning focus to the trigger must not re-open the submenu.
+      dropdownOpening = document.activeElement === dropdownTrigger;
+      setDropdown(false);
+      dropdownTrigger.focus();
+      dropdownOpening = true;
+    });
+  }
 
   /* ---------- Mobile menu ---------- */
   function closeMenu() {
@@ -27,27 +74,15 @@
       navToggle.classList.toggle('active', isOpen);
       navToggle.setAttribute('aria-expanded', String(isOpen));
       navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      if (!isOpen) setDropdown(false);
     });
 
     // Close the menu when a navigation link is clicked
     mainNav.addEventListener('click', function (event) {
       var link = event.target.closest('a');
-      if (!link) return;
-      var parentDropdown = link.closest('.has-dropdown');
-
-      if (link.parentElement.classList.contains('has-dropdown') ||
-          (parentDropdown && link === parentDropdown.querySelector(':scope > a'))) {
-        // Toggle the submenu instead of navigating away
-        event.preventDefault();
-        parentDropdown.classList.toggle('open');
-        var subToggle = parentDropdown.querySelector(':scope > a');
-        if (subToggle) {
-          subToggle.setAttribute('aria-expanded',
-            String(parentDropdown.classList.contains('open')));
-        }
-        return;
-      }
+      if (!link || link === dropdownTrigger) return;
       closeMenu();
+      setDropdown(false);
     });
 
     // Close on escape / resize to desktop

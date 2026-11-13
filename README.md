@@ -29,11 +29,18 @@ infycortex-solution/
 ├── features.html               # Development capabilities
 ├── services.html               # Main services overview
 ├── websites.html               # Website development detail
+├── software-development.html   # Software development detail
+├── ai-ml.html                  # AI & machine learning detail
+├── iot.html                    # IoT & embedded projects detail
 ├── college-projects.html       # College project development detail
+├── pricing.html                # Pricing & packages
 ├── demos.html                  # Project demos
+├── faq.html                    # Frequently asked questions
 ├── about.html                  # About the company
 ├── contact.html                # Contact + enquiry form
-├── 404.html                    # Not-found page
+├── privacy.html                # Privacy policy
+├── terms.html                  # Terms of service
+├── 404.html                    # Not-found page (noindex, excluded from sitemap)
 │
 ├── css/
 │   └── style.css               # All styles (design tokens, layout, responsive)
@@ -46,11 +53,14 @@ infycortex-solution/
 │   │   ├── icon.svg            # Symbol mark — black infinity + blue glow (light backgrounds)
 │   │   ├── icon-light.svg      # Symbol mark — light variant (navy/dark backgrounds)
 │   │   ├── favicon.svg         # Favicon — navy badge + light symbol
+│   │   ├── favicon.ico         # Legacy favicon
+│   │   ├── apple-touch-icon.png
 │   │   ├── logo.svg            # Horizontal lockup (SVG, vector)
 │   │   ├── logo-vertical.svg   # Vertical lockup (SVG, vector)
-│   │   ├── icon.png            # 2000×2000 PNG (white background)
-│   │   ├── logo.png            # 2000px-wide horizontal PNG (white background)
-│   │   ├── logo.jpg            # 2000px-wide horizontal JPG (white background)
+│   │   ├── icon.png / icon.jpg # 2000×2000 exports (white background)
+│   │   ├── logo.png / logo.jpg # 2000px-wide horizontal exports (white background)
+│   │   ├── logo-vertical.png   # Vertical PNG export
+│   │   ├── logo-vertical.jpg   # Vertical JPG export
 │   │   └── og-image.png        # 1200×630 social-share preview (generated from logo.png)
 │   ├── images/                 # (reserved for future photos)
 │   ├── icons/                  # (icons are inline SVG in markup)
@@ -61,7 +71,7 @@ infycortex-solution/
 │       └── hydroponics.svg
 │
 ├── robots.txt                  # Crawler policy + sitemap pointer
-├── sitemap.xml                 # All 9 indexable pages
+├── sitemap.xml                 # All 16 indexable pages (404 excluded)
 ├── .nojekyll                   # Bypass Jekyll processing on GitHub Pages
 └── README.md
 ```
@@ -104,12 +114,12 @@ Because every path is relative (`./css/style.css`, `./js/script.js`, `./assets/.
 
 Every indexable page ships with:
 
-- **Canonical URL** and matching `og:url`
+- **Canonical URL** and matching `og:url` (the home page canonical is the bare base URL, `https://infycortex.github.io/`)
 - **Open Graph** full set (`og:title`, `og:description`, `og:type`, `og:image` with 1200×630 dimensions, `og:locale`)
 - **Twitter card** (`summary_large_image` with per-page title/description/image)
-- `robots` (`index, follow`), `theme-color` (`#0B1F3A`), SVG + PNG + apple-touch favicons
-- **JSON-LD** `Organization` schema on `index.html` (name, url, logo, email, sameAs social profiles, contactPoint)
-- **`robots.txt`** + **`sitemap.xml`** (all 9 pages) + **`.nojekyll`** for GitHub Pages
+- `robots` (`index, follow`), `theme-color` (`#0B1F3A`), SVG + ICO + apple-touch favicons
+- **JSON-LD:** `ProfessionalService` on the home page and each service detail page, `Service` on the six service pages, `BreadcrumbList` on every inner page, `FAQPage` on `faq.html`
+- **`robots.txt`** + **`sitemap.xml`** (16 indexable pages; `404.html` is `noindex` and excluded) + **`.nojekyll`** for GitHub Pages
 
 ### Base URL
 
@@ -123,7 +133,11 @@ If the site ever moves to a different domain or repository name, find-and-replac
 
 ## Contact Form
 
-The site is backend-free, so the enquiry form on `contact.html` uses a **mailto:** flow: after client-side validation it opens the visitor's email app with a pre-filled message addressed to `infycortex@gmail.com`. To collect submissions without a mail client, point the form at a static-form service (e.g. Formspree) later by swapping the `action`/`fetch` in `js/script.js` — no markup changes needed.
+The site stays backend-free. The enquiry form on `contact.html` validates in the browser, then posts to a static-form service (Formspree or similar) configured through `FORM_ENDPOINT` at the top of the form section in `js/script.js`.
+
+The endpoint currently holds a placeholder (`[[OWNER TO PROVIDE: FORMSPREE FORM ID]]`). While it is unset, the form falls back to a **mailto:** flow — it opens the visitor's email app with the enquiry pre-filled and addressed to `infycortex@gmail.com`, so no enquiry is silently lost. Replace the placeholder with your form endpoint and the fetch path activates automatically; no markup changes are needed.
+
+The form also carries a honeypot field and an inline status line (`role="status"` for progress/success, `role="alert"` for errors).
 
 ## Contact Channels & Social Links
 
@@ -151,11 +165,19 @@ All external links open in a new tab with `rel="noopener noreferrer"` and carry 
 
 ## Accessibility & Performance Notes
 
-- Semantic landmarks, single `h1` per page, labelled form fields, `aria-current` navigation state, visible focus styles.
+- Semantic landmarks, one `h1` per page, labelled form fields, `aria-current="page"` on the active nav item, a skip link, and visible `:focus-visible` rings (blue on light surfaces, cyan on dark).
+- The Services dropdown is keyboard-operable: focus or Enter/Space opens it, Escape closes it and returns focus to the trigger, Tab order follows the visual order, and `aria-expanded` tracks state.
+- Body text meets WCAG AA contrast (4.5:1); links inside paragraphs are underlined so colour is not the only cue.
+- Icon-only links (social, floating WhatsApp, back-to-top) have accessible names; all external links use `target="_blank"` with `rel="noopener noreferrer"`.
+- Touch targets on icon buttons are at least 44×44 px; layouts were checked from 320 px to 1440 px with no horizontal scroll.
 - `prefers-reduced-motion` disables the hero network animation and reveal animations; a static frame is drawn instead.
 - The hero visual is a lightweight `<canvas>` neural-network animation (nodes + links); if JavaScript is unavailable, a static logo fallback is shown.
 - All icons and artwork are inline/file SVG — zero image-weight, zero icon-library dependencies.
 - No console errors; JavaScript is one small deferred file.
+
+## Content Placeholders
+
+Some business-specific details are intentionally not invented. They appear as `[[OWNER TO PROVIDE: description]]` in the markup and in `js/script.js`, and must be replaced with real information before publishing. Affected pages: `about.html`, `pricing.html`, `faq.html`, `iot.html`, `privacy.html`, `terms.html` and the contact-form endpoint. Search the project for `[[OWNER TO PROVIDE` to find every one.
 
 ---
 

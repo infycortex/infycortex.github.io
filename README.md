@@ -116,10 +116,10 @@ Every indexable page ships with:
 All absolute URLs (canonical, `og:url`, `og:image`, sitemap, robots.txt) use this base:
 
 ```text
-https://sushant-0611.github.io/infycortex/
+https://infycortex.github.io/
 ```
 
-If your repository name is different (e.g. `infycortex-solution`), find-and-replace the base URL `sushant-0611.github.io/infycortex/` across all `*.html` heads, `robots.txt` and `sitemap.xml` after creating the repo — then push.
+If the site ever moves to a different domain or repository name, find-and-replace this base URL across all `*.html` heads, `robots.txt`, `sitemap.xml` and `README.md` — then push.
 
 ## Contact Form
 

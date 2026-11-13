@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sushant-0611.github.io/infycortex/sitemap.xml
+Sitemap: https://infycortex.github.io/sitemap.xml

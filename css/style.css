@@ -757,6 +757,26 @@ section { padding: 88px 0; }
   gap: 10px;
 }
 
+.project-details { margin-top: 18px; }
+.project-details > summary { list-style: none; }
+.project-details > summary::-webkit-details-marker { display: none; }
+.project-details[open] > summary { margin-bottom: 12px; }
+.project-details-body {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding-left: 14px;
+  border-left: 3px solid var(--cyan);
+}
+.project-details-body p + p { margin-top: 10px; }
+.project-details-body strong { color: var(--navy); }
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.project-links[hidden] { display: none; }
+
 /* ---------- 12. CTA band ---------- */
 .cta-band {
   text-align: center;

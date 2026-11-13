@@ -96,6 +96,28 @@
     el.textContent = new Date().getFullYear();
   });
 
+  /* ---------- Project cards: show demo / source links only when configured ---------- */
+  var projectCards = document.querySelectorAll('.project-card[data-demo-url], .project-card[data-repo-url]');
+  projectCards.forEach(function (card) {
+    var slot = card.querySelector('.project-links');
+    if (!slot) return;
+    [
+      { attr: 'data-demo-url', label: 'Live Demo', className: 'btn btn-primary btn-sm' },
+      { attr: 'data-repo-url', label: 'Source Code', className: 'btn btn-outline btn-sm' }
+    ].forEach(function (item) {
+      var url = (card.getAttribute(item.attr) || '').trim();
+      if (!url) return;
+      var link = document.createElement('a');
+      link.href = url;
+      link.className = item.className;
+      link.textContent = item.label;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      slot.appendChild(link);
+    });
+    if (slot.children.length) slot.hidden = false;
+  });
+
   /* ---------- Hero neural-network canvas (home) ---------- */
   var heroVisual = document.querySelector('.hero-visual');
 

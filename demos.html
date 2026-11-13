@@ -97,8 +97,12 @@
       <div class="container">
         <div class="grid grid-2">
 
-          <article class="project-card reveal">
+          <!-- To publish a live demo or public repository, fill data-demo-url / data-repo-url.
+               Buttons appear automatically; leave them empty and nothing is shown. -->
+          <article class="project-card reveal" id="complaint-management" data-demo-url="" data-repo-url="">
             <div class="project-media">
+              <!-- Screenshot slot: once a real screenshot exists, replace the SVG below with
+                   <img src="./assets/projects/complaint-management-screenshot.png" alt="Smart Complaint Management System interface" width="1280" height="800" loading="lazy"> -->
               <img src="./assets/projects/complaint-management.svg" alt="Smart Complaint Management System interface preview" loading="lazy" width="640" height="400">
               <span class="badge">Academic Demo</span>
             </div>
@@ -113,16 +117,25 @@
                 <li>Node.js</li>
                 <li>MongoDB</li>
               </ul>
+              <details class="project-details">
+                <summary class="btn btn-outline btn-sm">Project Details</summary>
+                <div class="project-details-body">
+                  <p><strong>What it does:</strong> Users file a complaint with a category and description, follow its status in real time and read updates posted by staff. Administrators assign complaints, change status and keep a record of every action.</p>
+                  <p><strong>What a walkthrough covers:</strong> the complaint submission flow, the administrator dashboard and the role-based access rules behind both.</p>
+                </div>
+              </details>
               <div class="project-actions">
-                <a href="./contact.html" class="btn btn-primary btn-sm">View Demo</a>
-                <a href="./contact.html" class="btn btn-outline btn-sm">View Details</a>
+                <a href="./contact.html?project=complaint-management" class="btn btn-primary btn-sm">Request Walkthrough</a>
+                <span class="project-links" hidden></span>
               </div>
-              <p class="form-note" style="margin-top: 14px;">Live demo coming soon — contact us for a walkthrough.</p>
+              <p class="form-note" style="margin-top: 14px;">No public demo yet — request a walkthrough and we will show the working system directly.</p>
             </div>
           </article>
 
-          <article class="project-card reveal reveal-delay-1">
+          <article class="project-card reveal reveal-delay-1" id="safehaven-iot" data-demo-url="" data-repo-url="">
             <div class="project-media">
+              <!-- Screenshot slot: once a real screenshot exists, replace the SVG below with
+                   <img src="./assets/projects/safehaven-iot-screenshot.png" alt="SafeHaven IoT dashboard" width="1280" height="800" loading="lazy"> -->
               <img src="./assets/projects/safehaven-iot.svg" alt="SafeHaven IoT smart safety system network preview" loading="lazy" width="640" height="400">
               <span class="badge">Academic Demo</span>
             </div>
@@ -136,16 +149,25 @@
                 <li>REST API</li>
                 <li>Web Dashboard</li>
               </ul>
+              <details class="project-details">
+                <summary class="btn btn-outline btn-sm">Project Details</summary>
+                <div class="project-details-body">
+                  <p><strong>What it does:</strong> Sensor readings are sent to a REST API, checked against thresholds and displayed on a web dashboard. Unusual readings raise an alert so the situation can be checked immediately.</p>
+                  <p><strong>What a walkthrough covers:</strong> the sensor-to-dashboard data path, the alert thresholds and the dashboard views.</p>
+                </div>
+              </details>
               <div class="project-actions">
-                <a href="./contact.html" class="btn btn-primary btn-sm">View Demo</a>
-                <a href="./contact.html" class="btn btn-outline btn-sm">View Details</a>
+                <a href="./contact.html?project=safehaven-iot" class="btn btn-primary btn-sm">Request Walkthrough</a>
+                <span class="project-links" hidden></span>
               </div>
-              <p class="form-note" style="margin-top: 14px;">Live demo coming soon — contact us for a walkthrough.</p>
+              <p class="form-note" style="margin-top: 14px;">No public demo yet — request a walkthrough and we will show the working system directly.</p>
             </div>
           </article>
 
-          <article class="project-card reveal">
+          <article class="project-card reveal" id="careq" data-demo-url="" data-repo-url="">
             <div class="project-media">
+              <!-- Screenshot slot: once a real screenshot exists, replace the SVG below with
+                   <img src="./assets/projects/careq-screenshot.png" alt="CareQ queue console" width="1280" height="800" loading="lazy"> -->
               <img src="./assets/projects/careq.svg" alt="CareQ clinic queue management dashboard preview" loading="lazy" width="640" height="400">
               <span class="badge">Academic Demo</span>
             </div>
@@ -158,16 +180,25 @@
                 <li>API</li>
                 <li>Database</li>
               </ul>
+              <details class="project-details">
+                <summary class="btn btn-outline btn-sm">Project Details</summary>
+                <div class="project-details-body">
+                  <p><strong>What it does:</strong> Patients join the queue from a phone instead of standing in line, see their live token position and are notified as their turn approaches. Clinic staff manage the queue from a simple console.</p>
+                  <p><strong>What a walkthrough covers:</strong> the patient join-and-track flow and the staff queue console.</p>
+                </div>
+              </details>
               <div class="project-actions">
-                <a href="./contact.html" class="btn btn-primary btn-sm">View Demo</a>
-                <a href="./contact.html" class="btn btn-outline btn-sm">View Details</a>
+                <a href="./contact.html?project=careq" class="btn btn-primary btn-sm">Request Walkthrough</a>
+                <span class="project-links" hidden></span>
               </div>
-              <p class="form-note" style="margin-top: 14px;">Live demo coming soon — contact us for a walkthrough.</p>
+              <p class="form-note" style="margin-top: 14px;">No public demo yet — request a walkthrough and we will show the working system directly.</p>
             </div>
           </article>
 
-          <article class="project-card reveal reveal-delay-1">
+          <article class="project-card reveal reveal-delay-1" id="hydroponics" data-demo-url="" data-repo-url="">
             <div class="project-media">
+              <!-- Screenshot slot: once a real screenshot exists, replace the SVG below with
+                   <img src="./assets/projects/hydroponics-screenshot.png" alt="Hydroponics monitoring dashboard" width="1280" height="800" loading="lazy"> -->
               <img src="./assets/projects/hydroponics.svg" alt="Hydroponics monitoring and automation system preview" loading="lazy" width="640" height="400">
               <span class="badge">Academic Demo</span>
             </div>
@@ -180,11 +211,18 @@
                 <li>Automation</li>
                 <li>AI/ML</li>
               </ul>
+              <details class="project-details">
+                <summary class="btn btn-outline btn-sm">Project Details</summary>
+                <div class="project-details-body">
+                  <p><strong>What it does:</strong> Nutrient, pH, temperature and humidity readings are collected continuously, pumps and lighting switch automatically against configured ranges, and the readings are visualised over time.</p>
+                  <p><strong>What a walkthrough covers:</strong> the sensor setup, the automation rules and the monitoring dashboard.</p>
+                </div>
+              </details>
               <div class="project-actions">
-                <a href="./contact.html" class="btn btn-primary btn-sm">View Demo</a>
-                <a href="./contact.html" class="btn btn-outline btn-sm">View Details</a>
+                <a href="./contact.html?project=hydroponics" class="btn btn-primary btn-sm">Request Walkthrough</a>
+                <span class="project-links" hidden></span>
               </div>
-              <p class="form-note" style="margin-top: 14px;">Live demo coming soon — contact us for a walkthrough.</p>
+              <p class="form-note" style="margin-top: 14px;">No public demo yet — request a walkthrough and we will show the working system directly.</p>
             </div>
           </article>
 
@@ -203,9 +241,9 @@
         </div>
         <div class="panel-visual reveal reveal-delay-1">
           <img class="panel-mark" src="./assets/logo/icon-light.svg" alt="" width="150" height="69">
-          <h3>Demo Coming Soon</h3>
-          <p>Live demos for these projects are being prepared. Each one will be published here when it's ready — no fake links, no placeholders pretending to work.</p>
-          <a href="./contact.html" class="btn btn-outline btn-sm" style="margin-top: 10px;">Request a Walkthrough</a>
+          <h3>No Dead Links, Ever</h3>
+          <p>None of these projects has a public demo link yet. When one is genuinely ready to share it will appear on its card — until then, a request is the honest way to see it working.</p>
+          <a href="./contact.html?service=college-project" class="btn btn-outline btn-sm" style="margin-top: 10px;">Request a Walkthrough</a>
         </div>
       </div>
     </section>

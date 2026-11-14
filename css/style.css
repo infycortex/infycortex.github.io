@@ -917,7 +917,7 @@ section { padding: 88px 0; }
   padding: 40px 34px;
   box-shadow: var(--shadow-lg);
 }
-.contact-info-card h3 { color: var(--white); }
+.contact-info-card h2 { color: var(--white); font-size: 1.2rem; }
 .contact-info-card p { font-size: 0.95rem; }
 
 .contact-method {
@@ -1150,7 +1150,7 @@ main .legal a,
 }
 .contact-social .social-list { margin-top: 12px; }
 
-.footer-col h3 {
+.footer-col h2, .footer-col h3 {
   color: var(--white);
   font-size: 0.95rem;
   letter-spacing: 1.5px;

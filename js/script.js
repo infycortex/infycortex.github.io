@@ -262,23 +262,24 @@
   }
 
   /* ---------- Contact form ---------- */
-  // Form endpoint — replace the placeholder with your Formspree (or similar) URL.
-  // While the placeholder is present, the form falls back to a pre-filled email.
-  var FORM_ENDPOINT = 'https://formspree.io/f/[[OWNER TO PROVIDE: FORMSPREE FORM ID]]';
+  // Form endpoint — set your Formspree (or similar) URL here.
+  // While it is empty, the form falls back to a pre-filled email.
+  var FORM_ENDPOINT = '';
 
   // Maps ?service= query values to the dropdown options.
   var SERVICE_ALIASES = {
-    'college-project': 'College Project',
-    'college-projects': 'College Project',
+    'college': 'College Project Development',
+    'college-project': 'College Project Development',
+    'college-projects': 'College Project Development',
     'website': 'Website Development',
     'website-development': 'Website Development',
     'websites': 'Website Development',
     'software': 'Software Development',
     'software-development': 'Software Development',
-    'ai-ml': 'AI/ML Project',
-    'ai-ml-project': 'AI/ML Project',
-    'iot': 'IoT Project',
-    'iot-project': 'IoT Project'
+    'ai-ml': 'AI and Machine Learning',
+    'ai-ml-project': 'AI and Machine Learning',
+    'iot': 'IoT Solutions',
+    'iot-project': 'IoT Solutions'
   };
 
   var form = document.querySelector('#enquiryForm');
@@ -387,7 +388,7 @@
     if (honeypot && honeypot.value.trim()) return;
 
     var endpoint = FORM_ENDPOINT.trim();
-    if (!endpoint || endpoint.indexOf('[[OWNER TO PROVIDE') !== -1) {
+    if (!endpoint) {
       console.warn('InfyCortex: contact form endpoint is not configured yet — falling back to a pre-filled email. Set FORM_ENDPOINT in js/script.js.');
       openMailto();
       setStatus('Your email app is opening with the enquiry filled in. If nothing happens, email infycortex@gmail.com or message us on WhatsApp at +91 90214 96257.', 'pending');

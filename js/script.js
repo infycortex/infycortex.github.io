@@ -1,8 +1,8 @@
 /* ============================================================
    InfyCortex Solution — script.js
    Mobile menu, scroll effects, reveal animations, back-to-top,
-   hero neural-network canvas, footer year, project link slots and
-   the contact form (fetch submission with mailto fallback).
+   hero neural-network canvas, footer year and the contact form
+   (fetch submission with mailto fallback).
    ============================================================ */
 (function () {
   'use strict';
@@ -129,28 +129,6 @@
   /* ---------- Footer year ---------- */
   document.querySelectorAll('.js-year').forEach(function (el) {
     el.textContent = new Date().getFullYear();
-  });
-
-  /* ---------- Project cards: show demo / source links only when configured ---------- */
-  var projectCards = document.querySelectorAll('.project-card[data-demo-url], .project-card[data-repo-url]');
-  projectCards.forEach(function (card) {
-    var slot = card.querySelector('.project-links');
-    if (!slot) return;
-    [
-      { attr: 'data-demo-url', label: 'Live Demo', className: 'btn btn-primary btn-sm' },
-      { attr: 'data-repo-url', label: 'Source Code', className: 'btn btn-outline btn-sm' }
-    ].forEach(function (item) {
-      var url = (card.getAttribute(item.attr) || '').trim();
-      if (!url) return;
-      var link = document.createElement('a');
-      link.href = url;
-      link.className = item.className;
-      link.textContent = item.label;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      slot.appendChild(link);
-    });
-    if (slot.children.length) slot.hidden = false;
   });
 
   /* ---------- Hero neural-network canvas (home) ---------- */
@@ -288,12 +266,8 @@
   // While the placeholder is present, the form falls back to a pre-filled email.
   var FORM_ENDPOINT = 'https://formspree.io/f/[[OWNER TO PROVIDE: FORMSPREE FORM ID]]';
 
-  // Maps ?project= / ?service= query values to the dropdown options.
+  // Maps ?service= query values to the dropdown options.
   var SERVICE_ALIASES = {
-    'complaint-management': 'College Project',
-    'safehaven-iot': 'IoT Project',
-    'careq': 'College Project',
-    'hydroponics': 'IoT Project',
     'college-project': 'College Project',
     'college-projects': 'College Project',
     'website': 'Website Development',
@@ -318,7 +292,7 @@
     var service = form.querySelector('#service');
     if (!service) return;
     var params = new URLSearchParams(window.location.search);
-    var requested = (params.get('project') || params.get('service') || '').trim().toLowerCase();
+    var requested = (params.get('service') || '').trim().toLowerCase();
     if (!requested) return;
     var match = SERVICE_ALIASES[requested] || '';
     if (!match) {

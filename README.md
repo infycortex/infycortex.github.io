@@ -34,7 +34,7 @@ infycortex-solution/
 ├── iot.html                    # IoT & embedded projects detail
 ├── college-projects.html       # College project development detail
 ├── pricing.html                # Pricing & packages
-├── demos.html                  # Project demos
+├── demos.html                  # Redirect stub → services.html (noindex)
 ├── faq.html                    # Frequently asked questions
 ├── about.html                  # About the company
 ├── contact.html                # Contact + enquiry form
@@ -63,12 +63,7 @@ infycortex-solution/
 │   │   ├── logo-vertical.jpg   # Vertical JPG export
 │   │   └── og-image.png        # 1200×630 social-share preview (generated from logo.png)
 │   ├── images/                 # (reserved for future photos)
-│   ├── icons/                  # (icons are inline SVG in markup)
-│   └── projects/
-│       ├── complaint-management.svg
-│       ├── safehaven-iot.svg
-│       ├── careq.svg
-│       └── hydroponics.svg
+│   └── icons/                  # (icons are inline SVG in markup)
 │
 ├── robots.txt                  # Crawler policy + sitemap pointer
 ├── sitemap.xml                 # All 16 indexable pages (404 excluded)

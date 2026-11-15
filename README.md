@@ -2,7 +2,7 @@
 
 **Think. Build. Deliver.**
 
-InfyCortex Solution builds professional websites, custom software, AI and machine-learning prototypes, IoT systems and college projects — for businesses and students across India.
+InfyCortex Solution builds professional websites, custom software and college projects — including AI/ML and IoT projects — and runs a student internship program, for businesses and students across India.
 
 This is the complete static website for InfyCortex Solution — pure HTML5, CSS3 and vanilla JavaScript, ready for GitHub Pages.
 
@@ -19,15 +19,14 @@ This is the complete static website for InfyCortex Solution — pure HTML5, CSS3
 
 No frameworks, no build step, no backend, no database.
 
-## The five services
+## The four services
 
 The same order is used everywhere — main nav dropdown, footer, `services.html`, home cards, pricing, contact form, sitemap and structured data:
 
 1. Website Development — `websites.html`
 2. Software Development — `software-development.html`
-3. AI and Machine Learning — `ai-ml.html`
-4. IoT Solutions — `iot.html`
-5. College Project Development — `college-projects.html`
+3. Internship — `internship.html` (opens in a new tab from the nav dropdown)
+4. College Project Development — `college-projects.html` (also covers AI/ML and IoT projects)
 
 ## Project Structure
 
@@ -40,9 +39,8 @@ infycortex-solution/
 ├── services.html               # Services overview + detail sections
 ├── websites.html               # Website development
 ├── software-development.html   # Software development
-├── ai-ml.html                  # AI and machine learning
-├── iot.html                    # IoT solutions
-├── college-projects.html       # College project development
+├── internship.html             # Internship program (coming soon)
+├── college-projects.html       # College project development (incl. AI/ML and IoT)
 ├── pricing.html                # How pricing works, per service
 ├── faq.html                    # Frequently asked questions
 ├── about.html                  # About, values and founder profile
@@ -72,11 +70,12 @@ infycortex-solution/
 │   │   ├── logo-vertical.png   # Vertical PNG export
 │   │   ├── logo-vertical.jpg   # Vertical JPG export
 │   │   └── og-image.png        # 1200×630 social-share preview
-│   ├── images/                 # (reserved for future photos)
+│   ├── images/
+│   │   └── founder-sushant-kakade.jpg  # Founder photo (About page)
 │   └── icons/                  # (icons are inline SVG in markup)
 │
 ├── robots.txt                  # Crawler policy + sitemap pointer
-├── sitemap.xml                 # All 15 indexable pages (404 and redirect stub excluded)
+├── sitemap.xml                 # All 14 indexable pages (404 and redirect stub excluded)
 ├── .nojekyll                   # Bypass Jekyll processing on GitHub Pages
 └── README.md
 ```
@@ -123,8 +122,8 @@ Every indexable page ships with:
 - **Open Graph** full set (`og:title`, `og:description`, `og:type`, `og:image` with 1200×630 dimensions, `og:locale`)
 - **Twitter card** (`summary_large_image` with per-page title/description/image)
 - `robots` (`index, follow`), `theme-color` (`#0B1F3A`), SVG + ICO + apple-touch favicons
-- **JSON-LD:** `ProfessionalService` with a `founder` `Person` on the home page, `Service` on each of the five service pages, `Person` on `about.html`, `BreadcrumbList` on every inner page, and `FAQPage` on `faq.html` plus all five service pages (matching the visible questions and answers)
-- **`robots.txt`** + **`sitemap.xml`** (15 indexable pages; `404.html` and the `demos.html` redirect stub are excluded) + **`.nojekyll`** for GitHub Pages
+- **JSON-LD:** `ProfessionalService` with a `founder` `Person` on the home page, `Service` on each of the four service pages, `Person` on `about.html`, `BreadcrumbList` on every inner page, and `FAQPage` on `faq.html` plus the service pages (matching the visible questions and answers)
+- **`robots.txt`** + **`sitemap.xml`** (14 indexable pages; `404.html` and the `demos.html` redirect stub are excluded) + **`.nojekyll`** for GitHub Pages
 
 ### Base URL
 
@@ -142,7 +141,7 @@ The site stays backend-free. The enquiry form on `contact.html` validates in the
 
 `FORM_ENDPOINT` is currently empty. While it is empty, the form falls back to a **mailto:** flow — it opens the visitor's email app with the enquiry pre-filled and addressed to `infycortex@gmail.com`, so no enquiry is silently lost. Set the endpoint URL and the fetch path activates automatically; no markup changes are needed.
 
-Service links use `?service=` slugs (`website`, `software`, `ai-ml`, `iot`, `college`) and the contact form preselects the matching option.
+Service links use `?service=` slugs (`website`, `software`, `internship`, `college`) and the contact form preselects the matching option.
 
 The form also carries a honeypot field and an inline status line (`role="status"` for progress/success, `role="alert"` for errors).
 
@@ -174,14 +173,14 @@ All external links open in a new tab with `rel="noopener noreferrer"` and carry 
 
 `about.html#founder` contains the founder profile: name, title (Founder and Lead Developer), bio, focus areas and GitHub/LinkedIn/Instagram links. The home page carries a compact founder card just above the contact strip. The same `Person` data is published as JSON-LD.
 
-The photo slot is intentionally rendered as an initials card until a founder photo is added. To use a photo, replace the `.founder-card` block in `about.html` with an `<img>` (square, at least 600×600 px, with descriptive `alt`) and keep the existing layout styles.
+The founder photo lives at `assets/images/founder-sushant-kakade.jpg` and is rendered as a circular portrait inside the `.founder-card` on `about.html`.
 
 ## Owner Actions Before Publishing
 
 1. **Formspree endpoint** — set `FORM_ENDPOINT` in `js/script.js` to the project's Formspree URL so submissions arrive without opening an email app.
-2. **Founder photo** — add a square photo (see Founder above).
-3. **Founder bio review** — the bio, focus areas and title were drafted from the service list and owner inputs; confirm the wording.
-4. **Legal review** — `privacy.html` and `terms.html` are plain-language drafts (last updated 14 November 2026) based on the stated business policies. Have both reviewed before relying on them as formal statements.
+2. **Founder bio review** — the bio, focus areas and title were drafted from the service list and owner inputs; confirm the wording.
+3. **Legal review** — `privacy.html` and `terms.html` are plain-language statements (last updated 14 November 2026) based on the stated business policies. Have both reviewed before relying on them as formal statements.
+4. **Internship program** — `internship.html` and the pricing section are "coming soon" placeholders; publish the real program details when the model is finalised.
 5. **No published prices by design** — pricing is quote-based; `pricing.html` explains what shapes each quote and links to the contact form.
 
 ## Accessibility & Performance Notes

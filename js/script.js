@@ -276,10 +276,7 @@
     'websites': 'Website Development',
     'software': 'Software Development',
     'software-development': 'Software Development',
-    'ai-ml': 'AI and Machine Learning',
-    'ai-ml-project': 'AI and Machine Learning',
-    'iot': 'IoT Solutions',
-    'iot-project': 'IoT Solutions'
+    'internship': 'Internship'
   };
 
   var form = document.querySelector('#enquiryForm');
